@@ -1,0 +1,17 @@
+div.flag {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+}
+
+img {
+    border-radius: 2rem; /* 240px */
+    width: 500px;
+    height: 380px;
+}
+
+img.country {
+    visibility: hidden;
+}

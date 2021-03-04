@@ -1,9 +1,16 @@
+html, body {
+    background: #f0f0f0;
+}
+
+
 div.flag {
     display: flex;
 
     align-items: center;
     justify-content: center;
     padding: 2em;
+
+    /* width: 50% */
 }
 
 img {

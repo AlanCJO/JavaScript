@@ -29,9 +29,13 @@ const addImage = (country = 'brazil') => {
 
     fetch(Endpoint.setName(country)).then((response) => {
         return response.json();
-    }).then((myBlob) => {
-        let imageURL = myBlob[0].flag;
+    }).then((request) => {
+        const countries = request[0]
+        const imageURL = countries.flag;
+        const name_pt = countries.translations.pt;
+
         image.src = imageURL;
+        image.alt = `Bandeira do ${name_pt}`
     }).then(() => {
         // tirando o visibility hidden
         image.classList.remove('country');
@@ -54,4 +58,3 @@ const App = {
         }
     }
 }
-

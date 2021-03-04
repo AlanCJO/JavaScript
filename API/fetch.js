@@ -42,6 +42,22 @@ const addImage = (country = 'brazil') => {
     });
 }
 
+const all = () => {
+
+    const datalist = document.getElementById('listcountries');
+
+    fetch(Endpoint.all).then(response => {
+        return response.json();
+    }).then((request) => {
+       console.log(typeof request);
+       request.forEach(country => {
+
+           country.translations.pt;
+       })
+    })
+
+}
+
 const App = {
     init(event) {
         App.submit(event);

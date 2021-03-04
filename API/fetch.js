@@ -1,3 +1,4 @@
+
 const Endpoint = {
 
     all: "https://restcountries.eu/rest/v2/all",
@@ -45,18 +46,23 @@ const addImage = (country = 'brazil') => {
 const all = () => {
 
     const datalist = document.getElementById('listcountries');
+    let allCountries = [];
 
     fetch(Endpoint.all).then(response => {
         return response.json();
     }).then((request) => {
-       console.log(typeof request);
        request.forEach(country => {
+            datalist.innerHTML += `
+                <option>${country.name}</option>
+            `;
+            allCountries.push(country.name);
+       });
+    });
 
-           country.translations.pt;
-       })
-    })
-
+    return allCountries;
 }
+
+const arrayCountries = all();
 
 const App = {
     init(event) {
@@ -67,10 +73,17 @@ const App = {
         event.preventDefault();
         const query = document.getElementById('search').value;
 
-        try {
-            addImage(query);
-        } catch (e) {
-            alert("A bandeira não foi encontrada!");
+        if (arrayCountries.indexOf(query) != -1) {
+            addImage(query)
+        } else {
+            alert("O país não existe! Digite o nome do país em inglês.")
         }
+
+        // try {
+        //     addImage(query);
+        // } catch (e) {
+        //     alert("A bandeira não foi encontrada!");
+        // }
     }
 }
+

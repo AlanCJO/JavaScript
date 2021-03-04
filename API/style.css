@@ -22,3 +22,14 @@ img {
 img.country {
     visibility: hidden;
 }
+
+label, input, button {
+    font-size: 1.5rem;
+    margin: 5px
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

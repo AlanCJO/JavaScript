@@ -60,11 +60,14 @@ const addImage = (country = 'brazil') => {
     }).then(() => {
         // tirando o hidden
         const cards = document.querySelector('div.hidden');
-        image.classList.remove('hidden');
-        setTimeout(() => {
-            cards.classList.remove('hidden');
 
-        }, 500)
+        if (image.classList.value === 'hidden') {
+            image.classList.remove('hidden');
+            setTimeout(() => {
+                cards.classList.remove('hidden');
+
+            }, 500)
+        }
     });
 }
 
@@ -96,7 +99,8 @@ const App = {
 
     submit(event) {
         event.preventDefault();
-        const query = document.getElementById('search').value;
+        let query = document.getElementById('search').value.trim().toLowerCase();
+        query = query[0].toUpperCase() + query.substr(1);
 
         if (arrayCountries.indexOf(query) != -1) {
             addImage(query)

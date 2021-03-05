@@ -24,9 +24,22 @@ const Endpoint = {
     }
 }
 
+const addInformation = (country) => {
+    
+    // elementos
+    const name = document.getElementById('name');
+    const population = document.getElementById('population')
+    const capital = document.getElementById('capital');
+    const continent = document.getElementById('continent');
+
+    name.innerHTML = country.translations.pt;
+    population.innerHTML = country.population;
+    capital.innerHTML = country.capital;
+    continent.innerHTML = country.region;
+};
+
 const addImage = (country = 'brazil') => {
     
-    let image = document.getElementById('country-flag');
 
     fetch(Endpoint.setName(country)).then((response) => {
         return response.json();
@@ -37,9 +50,14 @@ const addImage = (country = 'brazil') => {
 
         image.src = imageURL;
         image.alt = `Bandeira do ${name_pt}`
+
+        addInformation(countries);
     }).then(() => {
-        // tirando o visibility hidden
-        image.classList.remove('country');
+        // tirando o hidden
+        const elements = document.getElementsByClassName('hidden')
+        for (let i = 0; i < 2; i++) {
+            elements[i].classList.remove('hidden');
+        }
     });
 }
 
@@ -78,12 +96,5 @@ const App = {
         } else {
             alert("O país não existe! Digite o nome do país em inglês.")
         }
-
-        // try {
-        //     addImage(query);
-        // } catch (e) {
-        //     alert("A bandeira não foi encontrada!");
-        // }
     }
 }
-

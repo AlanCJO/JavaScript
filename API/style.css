@@ -2,6 +2,13 @@ html, body {
     background: #f0f0f0;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Poppins', sans-serif;
+}
+
 
 div.flag {
     display: flex;
@@ -9,8 +16,6 @@ div.flag {
     align-items: center;
     justify-content: center;
     padding: 2em;
-
-    /* width: 50% */
 }
 
 img {
@@ -19,7 +24,7 @@ img {
     height: 380px;
 }
 
-img.country {
+.hidden {
     visibility: hidden;
 }
 
@@ -32,4 +37,32 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* cards */
+div.information {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+div.information > div {
+    padding: 30px;
+
+    background: #adebad;
+    margin: 10px;
+    width: 150px;
+    height: 80px;
+
+    text-align: center;
+    border-radius: 20px;
+}
+
+.information span, h4 {
+    font-size: 20px
+}
+
+span#name {
+    text-transform: capitalize;
 }

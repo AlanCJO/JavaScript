@@ -37,13 +37,8 @@ const addInformation = (country) => {
 
     name.innerHTML = country.translations.pt;
     population.innerHTML = numberPopulation;
-
-    // se a capital não existe
-    if (!country.capital)
-        capital.innerHTML = "Não existe";
-    else 
-        capital.innerHTML = country.capital;
-        
+    // se a capital não existir...
+    capital.innerHTML = !country.capital ? "Não existe" : country.capital;
     continent.innerHTML = country.region;
 };
 

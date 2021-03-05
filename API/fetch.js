@@ -32,14 +32,24 @@ const addInformation = (country) => {
     const capital = document.getElementById('capital');
     const continent = document.getElementById('continent');
 
+    // adicionando expressão regular para colocar '.' como separador de milhar
+    const numberPopulation = country.population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
     name.innerHTML = country.translations.pt;
-    population.innerHTML = country.population;
-    capital.innerHTML = country.capital;
+    population.innerHTML = numberPopulation;
+
+    // se a capital não existe
+    if (!country.capital)
+        capital.innerHTML = "Não existe";
+    else 
+        capital.innerHTML = country.capital;
+        
     continent.innerHTML = country.region;
 };
 
 const addImage = (country = 'brazil') => {
     
+    let image = document.getElementById('country-flag');
 
     fetch(Endpoint.setName(country)).then((response) => {
         return response.json();
@@ -54,10 +64,12 @@ const addImage = (country = 'brazil') => {
         addInformation(countries);
     }).then(() => {
         // tirando o hidden
-        const elements = document.getElementsByClassName('hidden')
-        for (let i = 0; i < 2; i++) {
-            elements[i].classList.remove('hidden');
-        }
+        const cards = document.querySelector('div.hidden');
+        image.classList.remove('hidden');
+        setTimeout(() => {
+            cards.classList.remove('hidden');
+
+        }, 500)
     });
 }
 

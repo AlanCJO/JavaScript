@@ -99,13 +99,27 @@ const App = {
 
     submit(event) {
         event.preventDefault();
-        let query = document.getElementById('search').value.trim().toLowerCase();
-        query = query[0].toUpperCase() + query.substr(1);
+
+        let array = [];
+        let query = document.getElementById('search').value.trim();
+
+        // capitalize in country name
+        // query = query.split(" ");
+        // query.forEach(e => array.push(e[0].toUpperCase() + e.substr(1)));
+        // query = array.join(" ");
 
         if (arrayCountries.indexOf(query) != -1) {
-            addImage(query)
+            addImage(query);
         } else {
-            alert("O país não existe! Digite o nome do país em inglês.")
+            Swal.fire({
+                title: 'O país não existe! Digite o nome do país em inglês.',
+                showClass: {
+                  popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                  popup: 'animate__animated animate__fadeOutUp'
+                }
+            });
         }
     }
 }
